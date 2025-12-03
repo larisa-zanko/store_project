@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель администратора</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">Магазин самообслуживания</h1>
+                <div class="user-info">
+                    <span class="user-name">Иванов Иван</span>
+                    <span class="user-role"> - Администратор</span>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Сменить роль</a></li>
+                        <li><a href="admin.html" class="nav-link active">Управление кассами</a></li>
+                        <li><a href="merchandiser.html" class="nav-link">Товары</a></li>
+                        <li><a href="to-manager.html" class="nav-link">Сотрудники</a></li>
+                        <li><a href="reports.html" class="nav-link">Отчеты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section class="screen-header">
+                <h2>Панель администратора</h2>
+                <p>Управление кассами и помощь покупателям</p>
+            </section>
+            
+            <div class="admin-panels">
+                <div class="admin-panel">
+                    <h3>🏪 Управление кассами</h3>
+                    <div class="cash-register">
+                        <h4>Касса 1</h4>
+                        <p>Статус: <span class="status-active">Активна</span></p>
+                        <p>Последняя операция: 2 мин назад</p>
+                        <button class="btn btn-secondary">Отключить</button>
+                    </div>
+                    <div class="cash-register">
+                        <h4>Касса 2</h4>
+                        <p>Статус: <span class="status-inactive">Неактивна</span></p>
+                        <p>Последняя операция: 15 мин назад</p>
+                        <button class="btn btn-primary">Включить</button>
+                    </div>
+                </div>
+                
+                <div class="admin-panel">
+                    <h3>🛒 Корзины покупателей</h3>
+                    <div class="customer-cart">
+                        <h4>Корзина #001</h4>
+                        <p>Товаров: 3 | Сумма: 540 руб.</p>
+                        <p>Статус: Активная</p>
+                        <button class="btn btn-secondary">Просмотр</button>
+                        <button class="btn btn-danger">Удалить товар</button>
+                    </div>
+                    <div class="customer-cart">
+                        <h4>Корзина #002</h4>
+                        <p>Товаров: 5 | Сумма: 1200 руб.</p>
+                        <p>Статус: Ожидает оплаты</p>
+                        <button class="btn btn-secondary">Просмотр</button>
+                        <button class="btn btn-danger">Удалить товар</button>
+                    </div>
+                    <div class="pagination">
+                        <button class="btn-pagination active">1</button>
+                        <button class="btn-pagination">2</button>
+                        <button class="btn-pagination">3</button>
+                    </div>
+                </div>
+                
+                <div class="admin-panel">
+                    <h3>🔍 Поиск товаров</h3>
+                    <div class="search-controls">
+                        <input type="text" placeholder="Введите название или код товара">
+                        <button class="btn btn-primary">Найти</button>
+                    </div>
+                    <div class="filters">
+                        <label for="category-filter">Категория:</label>
+                        <select id="category-filter">
+                            <option value="all">Все</option>
+                            <option value="dairy">Молочные продукты</option>
+                            <option value="vegetables">Овощи</option>
+                            <option value="fruits">Фрукты</option>
+                            <option value="confectionery">Кондитерские изделия</option>
+                        </select>
+                        <button class="btn btn-secondary">Сбросить фильтры</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>&copy; 2023 Система самообслуживания магазина. Все права защищены.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#help">Помощь</a>
+                    <a href="#contact">Контакты</a>
+                    <a href="#privacy">Конфиденциальность</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
