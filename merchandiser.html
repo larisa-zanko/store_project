@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управление товарами</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">Магазин самообслуживания</h1>
+                <div class="user-info">
+                    <span class="user-name">Петрова Мария</span>
+                    <span class="user-role"> - Товаровед</span>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Сменить роль</a></li>
+                        <li><a href="merchandiser.html" class="nav-link active">Управление товарами</a></li>
+                        <li><a href="reports.html" class="nav-link">Отчеты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section class="screen-header">
+                <h2>Управление товарами и скидками</h2>
+                <p>Добавление, редактирование товаров и настройка скидок</p>
+            </section>
+            
+            <div class="admin-panels">
+                <div class="admin-panel">
+                    <h3>📦 Управление товарами</h3>
+                    <div class="search-controls">
+                        <input type="text" placeholder="Поиск товара...">
+                        <button class="btn btn-primary">Найти</button>
+                    </div>
+                    <div class="filters">
+                        <label for="sort-products">Сортировка:</label>
+                        <select id="sort-products">
+                            <option value="name">По названию</option>
+                            <option value="price">По цене</option>
+                            <option value="category">По категории</option>
+                        </select>
+                        <button class="btn btn-primary">Добавить товар</button>
+                    </div>
+                    
+                    <div class="products-list">
+                        <div class="product-item">
+                            <div class="product-info">
+                                <h4>Молоко "Минское"</h4>
+                                <p>Код: MLK001 | Цена: 2.50 руб. | 1 л | В наличии: 150 единиц</p>
+                                <span class="product-category category-dairy">Молочные продукты</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn btn-secondary">Редактировать</button>
+                                <button class="btn btn-danger">Удалить</button>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <div class="product-info">
+                                <h4>Йогурт "Оптималь"</h4>
+                                <p>Код: YOG004 | Цена: 1.50 руб. | 125 г | В наличии: 180 единиц</p>
+                                <span class="product-category category-dairy">Молочные продукты</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn btn-secondary">Редактировать</button>
+                                <button class="btn btn-danger">Удалить</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pagination">
+                        <button class="btn-pagination active">1</button>
+                        <button class="btn-pagination">2</button>
+                        <button class="btn-pagination">3</button>
+                    </div>
+                </div>
+                
+                <div class="admin-panel">
+                    <h3>🏷️ Управление скидками</h3>
+                    <button class="btn btn-primary" style="margin-bottom: 1.5rem;">Добавить скидку</button>
+                    <div class="customer-cart">
+                        <h4>Скидка 15% на йогурт "Оптималь"</h4>
+                        <p>Старая цена: 3.20 руб. | Новая цена: 2.72 руб.</p>
+                        <p>Действует до: 31.12.2023</p>
+                        <button class="btn btn-secondary">Редактировать</button>
+                        <button class="btn btn-danger">Удалить</button>
+                    </div>
+                    <div class="customer-cart">
+                        <h4>Скидка 10% на шоколад "Пористый"</h4>
+                        <p>Старая цена: 4.50 руб. | Новая цена: 4.05 руб.</p>
+                        <p>Действует до: 15.12.2023</p>
+                        <button class="btn btn-secondary">Редактировать</button>
+                        <button class="btn btn-danger">Удалить</button>
+                    </div>
+                </div>
+
+                <div class="admin-panel">
+                    <h3>📋 Учет просроченных товаров</h3>
+                    <div class="customer-cart">
+                        <h4>Списание товаров</h4>
+                        <p>Сумма утрат за текущий месяц: 5,400 руб.</p>
+                        <p>Товаров к списанию: 12 позиций</p>
+                        <button class="btn btn-warning">Просмотреть список</button>
+                        <button class="btn btn-danger">Оформить списание</button>
+                    </div>
+                    <div class="customer-cart">
+                        <h4>Последнее списание</h4>
+                        <p>Дата: 15.11.2023</p>
+                        <p>Сумма: 1,200 руб.</p>
+                        <p>Товаров: 8 позиций</p>
+                        <button class="btn btn-secondary">Детали</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="auth-form" style="margin-top: 2rem;">
+                <h3>Добавление товара</h3>
+                <div class="form-group">
+                    <label for="product-name">Название товара</label>
+                    <input type="text" id="product-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-code">Код товара (GTIN)</label>
+                    <input type="text" id="product-code" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-category">Категория</label>
+                    <select id="product-category">
+                        <option value="dairy">Молочные продукты</option>
+                        <option value="vegetables">Овощи</option>
+                        <option value="fruits">Фрукты</option>
+                        <option value="confectionery">Кондитерские изделия</option>
+                        <option value="drinks">Напитки</option>
+                        <option value="bakery">Хлебобулочные изделия</option>
+                        <option value="meat">Мясные продукты</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="product-price">Цена (руб.)</label>
+                    <input type="number" id="product-price" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-stock">Количество на складе</label>
+                    <input type="number" id="product-stock" required>
+                </div>
+                <div class="form-actions">
+                    <button class="btn btn-primary">Сохранить</button>
+                    <button class="btn btn-secondary">Отмена</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>&copy; 2023 Система самообслуживания магазина. Все права защищены.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#help">Помощь</a>
+                    <a href="#contact">Контакты</a>
+                    <a href="#privacy">Конфиденциальность</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

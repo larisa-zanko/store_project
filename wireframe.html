@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Схема связей - Система самообслуживания</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Дополнительные стили для схемы */
+        .wireframe-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .wireframe-box {
+            background: white;
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            padding: 1.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .wireframe-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.2);
+        }
+        
+        .wireframe-box::before {
+            content: 'Экран';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: white;
+            padding: 0 10px;
+            font-size: 0.8rem;
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        .flow-diagram {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            overflow-x: auto;
+        }
+        
+        .flow-step {
+            text-align: center;
+            padding: 1rem;
+            min-width: 120px;
+            flex-shrink: 0;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: #3498db;
+            color: white;
+            border-radius: 50%;
+            line-height: 30px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .connection-line {
+            display: flex;
+            align-items: center;
+            margin: 1rem 0;
+            padding: 0.5rem;
+            background: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .arrow {
+            margin: 0 10px;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+        
+        /* Цвета для разных ролей */
+        .role-customer { background: #2ecc71; }
+        .role-admin { background: #9b59b6; }
+        .role-merchandiser { background: #e67e22; }
+        .role-to-manager { background: #e74c3c; }
+        .role-manager { background: #3498db; }
+        
+        /* Стили для диаграммы связей */
+        .connection-map {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .connection-node {
+            padding: 1rem;
+            text-align: center;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .connection-line-horizontal {
+            grid-column: span 5;
+            height: 2px;
+            background: #3498db;
+            margin: 1rem 0;
+            position: relative;
+        }
+        
+        .connection-line-horizontal::after {
+            content: '→';
+            position: absolute;
+            right: -10px;
+            top: -10px;
+            color: #3498db;
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .flow-diagram {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .connection-map {
+                grid-template-columns: 1fr;
+            }
+            
+            .connection-line-horizontal {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">Схема связей системы</h1>
+                <div class="user-info">
+                    <span class="user-name">Карта навигации</span>
+                    <span class="user-role"> - Все связи между экранами</span>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Главная</a></li>
+                        <li><a href="wireframe.html" class="nav-link active">Схема связей</a></li>
+                        <li><a href="error.html" class="nav-link">Ошибки</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section class="screen-header">
+                <h2>🔗 Схема связей между экранами системы</h2>
+                <p>Визуальное представление всех навигационных связей и переходов между страницами</p>
+            </section>
+            
+            <!-- Легенда -->
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color role-customer"></div>
+                    <span>Покупатель</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color role-admin"></div>
+                    <span>Администратор</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color role-merchandiser"></div>
+                    <span>Товаровед</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color role-to-manager"></div>
+                    <span>Начальник ТО</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color role-manager"></div>
+                    <span>Руководитель</span>
+                </div>
+            </div>
+            
+            <!-- Общая схема системы -->
+            <div style="margin-top: 3rem; padding: 2rem; background: white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                <h3 style="text-align: center; margin-bottom: 2rem; color: #2c3e50;">Общая архитектура системы</h3>
+                
+                <div class="connection-map">
+                    <div class="connection-node role-customer">
+                        👤 Покупатель<br>
+                        <small>customer.html</small>
+                    </div>
+                    <div class="connection-node role-admin">
+                        👨‍💼 Администратор<br>
+                        <small>admin.html</small>
+                    </div>
+                    <div class="connection-node role-merchandiser">
+                        📦 Товаровед<br>
+                        <small>merchandiser.html</small>
+                    </div>
+                    <div class="connection-node role-to-manager">
+                        ⚙️ Начальник ТО<br>
+                        <small>to-manager.html</small>
+                    </div>
+                    <div class="connection-node role-manager">
+                        📊 Руководитель<br>
+                        <small>reports.html</small>
+                    </div>
+                    
+                    <div class="connection-line-horizontal"></div>
+                    
+                    <div class="connection-node" style="background: #95a5a6; grid-column: 1 / -1; text-align: center;">
+                        🏠 Главная страница<br>
+                        <small>index.html (точка входа для всех ролей)</small>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 2rem; padding: 1rem; background: #f8f9fa; border-radius: 8px;">
+                    <p><strong>Направление связей:</strong> Все страницы имеют обратную связь через кнопку "Сменить роль" → index.html</p>
+                    <p><strong>Обработка ошибок:</strong> Все страницы → error.html при возникновении ошибок</p>
+                </div>
+            </div>
+            
+            <!-- Подробная схема для каждой роли -->
+            <div class="wireframe-container">
+                <!-- Главная страница -->
+                <div class="wireframe-box">
+                    <h3>🏠 index.html</h3>
+                    <p><strong>Главная страница выбора роли</strong></p>
+                    <p><em>Функции:</em></p>
+                    <ul>
+                        <li>Выбор типа пользователя</li>
+                        <li>Точка входа в систему</li>
+                        <li>Навигация по ролям</li>
+                    </ul>
+                    
+                    <div class="connection-line">
+                        <strong>Исходящие связи:</strong>
+                        <span class="arrow">→</span>
+                        <div>
+                            <span class="status-success">customer.html</span><br>
+                            <span class="status-success">admin.html</span><br>
+                            <span class="status-success">merchandiser.html</span><br>
+                            <span class="status-success">to-manager.html</span><br>
+                            <span class="status-success">reports.html</span>
+                        </div>
+                    </div>
+                    
+                    <div class="connection-line">
+                        <strong>Входящие связи:</strong>
+                        <span class="arrow">←</span>
+                        <div>
+                            <span class="status-success">Все страницы (кнопка "Сменить роль")</span><br>
+                            <span class="status-success">error.html (при восстановлении)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Процесс покупки -->
+                <div class="wireframe-box">
+                    <h3>🛒 customer.html</h3>
+                    <p><strong>Процесс покупки для покупателя</strong></p>
+                    <p><em>Функции:</em></p>
+                    <ul>
+                        <li>Сканирование товаров</li>
+                        <li>Взвешивание товаров</li>
+                        <li>Управление корзиной</li>
+                        <li>Поиск товаров</li>
+                    </ul>
+                    
+                    <div class="connection-line">
+                        <strong>Основной поток:</strong>
+                        <div style="display: flex; align-items: center;">
+                            <span class="step-number">1</span>
+                            <span style="margin: 0 10px;">→</span>
+                            <span class="step-number">2</span>
+                            <span style="margin: 0 10px;">→</span>
+                            <span class="step-number">3</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-top: 0.5rem;">
+                            <span>Сканирование</span>
+                            <span>Взвешивание</span>
+                            <span>Оплата</span>
+                        </div>
+                    </div>
+                    
+                    <div class="connection-line">
+                        <strong>Связи:</strong>
+                        <span class="arrow">→</span>
+                        <span class="status-success">payment.html (переход к оплате)</span>
+                    </div>
+                </div>
+                
+                <!-- Оплата -->
+                <div class="wireframe-box">
+                    <h3>💳 payment.html</h3>
+                    <p><strong>Оплата покупки</strong></p>
+                    <p><em>Функции:</em></p>
+                    <ul>
+                        <li>Выбор способа оплаты</li>
+                        <li>Применение скидок</li>
+                        <li>Печать чека</li>
+                        <li>Завершение покупки</li>
+                    </ul>
+                    
+                    <div class="connection-line">
+                        <strong>Связи:</strong>
+                        <span class="arrow">→</span>
+                        <span class="status-success">customer.html (возврат к покупкам)</span><br>
+                        <span class="arrow">→</span>
+                        <span class="status-success">index.html (завершение сессии)</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Вторая строка схемы -->
+            <div class="wireframe-container" style="margin-top: 2rem;">
+                <!-- Админ панель -->
+                <div class="wireframe-box">
+                    <h3>⚙️ admin.html</h3>
+                    <p><strong>Панель администратора</strong></p>
+                    <p><em>Функции:</em></p>
+                    <ul>
+                        <li>Управление кассами</li>
+                        <li>Просмотр корзин</li>
+                        <li>Поиск товаров</li>
+                        <li>Фильтрация данных</li>
+                    </ul>
+                    
+                    <div class="connection-line">
+                        <strong>Связи:</strong>
+                        <span class="arrow">→</span>
+                        <span class="status-success">merchandiser.html (управление товарами)</span><br>
+                        <span class="arrow">→</span>
+                        <span class="status-success">to-manager.html (управление сотрудниками)</span><br>
+                        <span class="arrow">→</span>
+                        <span class="status-success">reports.html (просмотр отчетов)</span>
+                    </div>
+                    
+                    <div style="margin-top: 1rem; padding: 0.5rem; background: #e8f5e8; border-radius: 5px;">
+                        <small><strong>Элементы управления:</strong></small>
+                        <ul style="margin-left: 15px; margin-top: 0.5rem;">
+                            <li><small>Кнопки пагинации</small></li>
+                            <li><small>Фильтры по категориям</small></li>
+                            <li><small>Поисковая строка</small></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Управление товарами -->
+                <div class="wireframe-box">
+                    <h3>📦 merchandiser.html</h3>
+                    <p><strong>Управление товарами и скидками</strong></p>
+                    <p><em>Функции:</em></p>
+                    <ul>
+                        <li>Добавление/редактирование товаров</li>
+                        <li>Управление скидками</li>
+                        <li>Учет просроченных товаров</li>
+                        <li>Сортировка и фильтрация</li>
+                    </ul>
+                    
+                    <div class="connection-line">
+                        <strong>Связи:</strong>
+                        <span class="arrow">→</span>
+                        <span class="status-success">reports.html (отчеты по товарам)</span>
+                    </div>
+                    
+                    <div style="margin-top: 1rem; padding: 0.5rem; background: #fff3cd; border-radius: 5px;">
+                        <small><strong>Формы:</strong></small>
+                        <ul style="margin-left: 15px; margin-top: 0.5rem;">
+                            <li><small>Форма добавления товара</small></li>
+                            <li><small>Форма добавления скидки</small></li>
+                            <li><small>Форма списания товаров</small></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Управление сотрудниками -->
+                <div class="wireframe-box">
+                    <h3>👥 to-manager.html</h3>
+                    <p><strong>Управление сотрудниками и настройки</strong></p>
+                    <p><em>Функции:</em></p>
+                    <ul>
+                        <li>Добавление/редактирование сотрудников</li>
+                        <li>Настройки системы</li>
+                        <li>Управление правами доступа</li>
+                    </ul>
+                    
+                    <div class="connection-line">
+                        <strong>Связи:</strong>
+                        <span class="arrow">→</span>
+                        <span class="status-success">admin.html (настройки касс)</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Третья строка схемы -->
+            <div class="wireframe-container" style="margin-top: 2rem;">
+                <!-- Отчеты -->
+                <div class="wireframe-box">
+                    <h3>📊 reports.html</h3>
+                    <p><strong>Отчеты и аналитика</strong></p>
+                    <p><em>Функции:</em></p>
+                    <ul>
+                        <li>Анализ продаж</li>
+                        <li>Популярные товары</li>
+                        <li>Динамика цен</li>
+                        <li>Товары со скидками</li>
+                    </ul>
+                    
+                    <div class="connection-line">
+                        <strong>Связи:</strong>
+                        <span class="arrow">→</span>
+                        <span class="status-success">merchandiser.html (для корректировки ассортимента)</span>
+                    </div>
+                    
+                    <div style="margin-top: 1rem; padding: 0.5rem; background: #f3e5f5; border-radius: 5px;">
+                        <small><strong>Элементы фильтрации:</strong></small>
+                        <ul style="margin-left: 15px; margin-top: 0.5rem;">
+                            <li><small>Выбор периода (неделя/месяц/квартал)</small></li>
+                            <li><small>Фильтр по товарам</small></li>
+                            <li><small>Сортировка по популярности</small></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Страница ошибки -->
+                <div class="wireframe-box">
+                    <h3>⚠️ error.html</h3>
+                    <p><strong>Страница обработки ошибок</strong></p>
+                    <p><em>Функции:</em></p>
+                    <ul>
+                        <li>Информирование об ошибках</li>
+                        <li>Предложение решений</li>
+                        <li>Отправка отчета об ошибке</li>
+                        <li>Навигация на рабочие страницы</li>
+                    </ul>
+                    
+                    <div class="connection-line">
+                        <strong>Входящие связи:</strong>
+                        <span class="arrow">←</span>
+                        <div>
+                            <span class="status-success">Все страницы (при возникновении ошибок)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="connection-line">
+                        <strong>Исходящие связи:</strong>
+                        <span class="arrow">→</span>
+                        <div>
+                            <span class="status-success">index.html (на главную)</span><br>
+                            <span class="status-success">customer.html (к покупкам)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Диаграмма полного процесса покупки -->
+            <div style="margin-top: 3rem; padding: 2rem; background: white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                <h3 style="text-align: center; margin-bottom: 2rem; color: #2c3e50;">Полный процесс покупки (Flow)</h3>
+                
+                <div class="flow-diagram">
+                    <div class="flow-step">
+                        <div class="step-number">1</div>
+                        <strong>Выбор роли</strong>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">index.html</p>
+                        <p style="font-size: 0.8rem; color: #7f8c8d;">Пользователь выбирает "Покупатель"</p>
+                    </div>
+                    
+                    <div style="color: #3498db; font-size: 1.5rem;">→</div>
+                    
+                    <div class="flow-step active">
+                        <div class="step-number">2</div>
+                        <strong>Сканирование товаров</strong>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">customer.html</p>
+                        <p style="font-size: 0.8rem; color: #7f8c8d;">Панель 1: сканирование и взвешивание</p>
+                    </div>
+                    
+                    <div style="color: #3498db; font-size: 1.5rem;">→</div>
+                    
+                    <div class="flow-step">
+                        <div class="step-number">3</div>
+                        <strong>Проверка веса</strong>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">customer.html</p>
+                        <p style="font-size: 0.8rem; color: #7f8c8d;">Панель 2: проверка соответствия веса</p>
+                    </div>
+                    
+                    <div style="color: #3498db; font-size: 1.5rem;">→</div>
+                    
+                    <div class="flow-step">
+                        <div class="step-number">4</div>
+                        <strong>Оплата</strong>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">payment.html</p>
+                        <p style="font-size: 0.8rem; color: #7f8c8d;">Выбор способа оплаты и применение скидок</p>
+                    </div>
+                    
+                    <div style="color: #3498db; font-size: 1.5rem;">→</div>
+                    
+                    <div class="flow-step">
+                        <div class="step-number">5</div>
+                        <strong>Завершение</strong>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">payment.html</p>
+                        <p style="font-size: 0.8rem; color: #7f8c8d;">Печать чека и возврат к началу</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>&copy; 2024 Система самообслуживания магазина "YourChoice". Все права защищены.</p>
+                    <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #bdc3c7;">
+                        <strong>Схема связей:</strong> Эта страница показывает все переходы между экранами системы.
+                        <br>Используйте кнопку "Главная" для возврата к выбору роли.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Главная</a>
+                    <a href="wireframe.html" class="active">Схема связей</a>
+                    <a href="error.html">Ошибки</a>
+                    <a href="#help">Помощь</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

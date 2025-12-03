@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Процесс покупки</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">Магазин самообслуживания</h1>
+                <div class="user-info">
+                    <span class="user-name">Покупатель</span>
+                    <span class="user-role"> - Покупатель</span>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Сменить роль</a></li>
+                        <li><a href="customer.html" class="nav-link active">Покупка</a></li>
+                        <li><a href="payment.html" class="nav-link">Оплата</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section class="screen-header">
+                <h2>Процесс покупки</h2>
+                <p>Сканируйте товары и оплачивайте покупку самостоятельно</p>
+            </section>
+            
+            <div class="notification notification-warning">
+                ⚠️ Несоответствие веса! Ожидайте администратора.
+            </div>
+            
+            <div class="self-service-panels">
+                <div class="service-panel">
+                    <h3>📦 Панель 1: Сканирование и взвешивание</h3>
+                    <div class="panel-area">
+                        <p>Положите товар для автоматического взвешивания и сканирования штрих-кода</p>
+                        <p>Или приложите скидочную карту для применения скидок</p>
+                        <div class="weight-display">Вес: 1.25 кг</div>
+                        <div class="panel-status status-success">Штрих-код: считан успешно</div>
+                        <button class="btn btn-primary">Симулировать сканирование</button>
+                        <button class="btn btn-secondary">Симулировать взвешивание</button>
+                    </div>
+                </div>
+                
+                <div class="service-panel">
+                    <h3>⚖️ Панель 2: Проверка веса</h3>
+                    <div class="panel-area">
+                        <p>Переместите товар сюда для проверки соответствия веса</p>
+                        <div class="weight-check">✓ Вес соответствует</div>
+                        <div class="panel-status status-success">Товар готов к перемещению</div>
+                        <button class="btn btn-warning">Симулировать несоответствие веса</button>
+                    </div>
+                </div>
+                
+                <div class="service-panel">
+                    <h3>🔍 Панель 3: Управление</h3>
+                    <div class="panel-area">
+                        <p>Управление процессом покупки и поиск товаров</p>
+                        <button class="btn btn-secondary">Найти товар</button>
+                        <button class="btn btn-danger">Вызвать администратора</button>
+                        <a href="payment.html" class="btn btn-success">Оплатить</a>
+                        
+                        <div class="virtual-keyboard">
+                            <h4>Поиск товара</h4>
+                            <input type="text" placeholder="Введите название товара" style="width: 100%; margin-bottom: 1rem; padding: 0.5rem;">
+                            <div class="keyboard-row">
+                                <button class="keyboard-key">1</button>
+                                <button class="keyboard-key">2</button>
+                                <button class="keyboard-key">3</button>
+                                <button class="keyboard-key">4</button>
+                                <button class="keyboard-key">5</button>
+                                <button class="keyboard-key">6</button>
+                                <button class="keyboard-key">7</button>
+                                <button class="keyboard-key">8</button>
+                                <button class="keyboard-key">9</button>
+                                <button class="keyboard-key">0</button>
+                            </div>
+                            <div class="keyboard-row">
+                                <button class="keyboard-key">Й</button>
+                                <button class="keyboard-key">Ц</button>
+                                <button class="keyboard-key">У</button>
+                                <button class="keyboard-key">К</button>
+                                <button class="keyboard-key">Е</button>
+                                <button class="keyboard-key">Н</button>
+                                <button class="keyboard-key">Г</button>
+                                <button class="keyboard-key">Ш</button>
+                                <button class="keyboard-key">Щ</button>
+                                <button class="keyboard-key">З</button>
+                            </div>
+                            <div class="keyboard-row">
+                                <button class="keyboard-key">Ф</button>
+                                <button class="keyboard-key">Ы</button>
+                                <button class="keyboard-key">В</button>
+                                <button class="keyboard-key">А</button>
+                                <button class="keyboard-key">П</button>
+                                <button class="keyboard-key">Р</button>
+                                <button class="keyboard-key">О</button>
+                                <button class="keyboard-key">Л</button>
+                                <button class="keyboard-key">Д</button>
+                                <button class="keyboard-key">Ж</button>
+                            </div>
+                            <div class="keyboard-row">
+                                <button class="keyboard-key">Я</button>
+                                <button class="keyboard-key">Ч</button>
+                                <button class="keyboard-key">С</button>
+                                <button class="keyboard-key">М</button>
+                                <button class="keyboard-key">И</button>
+                                <button class="keyboard-key">Т</button>
+                                <button class="keyboard-key">Ь</button>
+                                <button class="keyboard-key">Б</button>
+                                <button class="keyboard-key">Ю</button>
+                                <button class="keyboard-key" style="background: #e74c3c; color: white;">⌫</button>
+                            </div>
+                            <div class="keyboard-row">
+                                <button class="btn btn-secondary">Закрыть</button>
+                                <button class="btn btn-primary">Найти</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cart">
+                <h3>🛒 Корзина товаров</h3>
+                <div class="cart-items">
+                    <div class="cart-item">
+                        <span class="item-name">Молоко "Минское"</span>
+                        <span class="item-quantity">1 шт</span>
+                        <span class="item-price">2.50 руб.</span>
+                        <button class="btn-remove">✕</button>
+                    </div>
+                    <div class="cart-item">
+                        <span class="item-name">Конфеты "Ореховые"</span>
+                        <span class="item-quantity">400 г</span>
+                        <span class="item-price">5.00 руб.</span>
+                        <button class="btn-remove">✕</button>
+                    </div>
+                    <div class="cart-item">
+                        <span class="item-name">Хлеб "Бородинский"</span>
+                        <span class="item-quantity">1 шт</span>
+                        <span class="item-price">1.60 руб.</span>
+                        <button class="btn-remove">✕</button>
+                    </div>
+                </div>
+                <div class="cart-total">
+                    <strong>Итого: 9.10 руб.</strong>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>&copy; 2023 Система самообслуживания магазина. Все права защищены.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#help">Помощь</a>
+                    <a href="#contact">Контакты</a>
+                    <a href="#privacy">Конфиденциальность</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

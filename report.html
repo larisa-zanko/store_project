@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отчеты и аналитика</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">Магазин самообслуживания</h1>
+                <div class="user-info">
+                    <span class="user-name">Козлова Анна</span>
+                    <span class="user-role"> - Руководитель</span>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Сменить роль</a></li>
+                        <li><a href="reports.html" class="nav-link active">Отчеты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section class="screen-header">
+                <h2>Отчеты и аналитика</h2>
+                <p>Анализ продаж и товарооборота</p>
+            </section>
+            
+            <div class="admin-panels">
+                <div class="admin-panel">
+                    <h3>📈 Популярные товары</h3>
+                    <div class="filters">
+                        <label for="report-period">Период:</label>
+                        <select id="report-period">
+                            <option value="week">За неделю</option>
+                            <option value="month">За месяц</option>
+                            <option value="quarter">За квартал</option>
+                        </select>
+                        <button class="btn btn-primary">Сформировать отчет</button>
+                    </div>
+                    <div class="customer-cart">
+                        <h4>Молоко "Минское"</h4>
+                        <p>Код: MLK001 | Продано: 154 шт</p>
+                        <p>Выручка: 385 руб.</p>
+                    </div>
+                    <div class="customer-cart">
+                        <h4>Хлеб "Бородинский"</h4>
+                        <p>Код: BREAD029 | Продано: 132 шт</p>
+                        <p>Выручка: 211.20 руб.</p>
+                    </div>
+                    <div class="customer-cart">
+                        <h4>Вода "Дарида" 1.5 л</h4>
+                        <p>Код: WAT020 | Продано: 98 шт</p>
+                        <p>Выручка: 147 руб.</p>
+                    </div>
+                </div>
+                
+                <div class="admin-panel">
+                    <h3>🏷️ Товары со скидкой</h3>
+                    <div class="filters">
+                        <label for="discount-period">Период:</label>
+                        <select id="discount-period">
+                            <option value="week">За неделю</option>
+                            <option value="month">За месяц</option>
+                            <option value="quarter">За квартал</option>
+                        </select>
+                        <button class="btn btn-primary">Сформировать отчет</button>
+                    </div>
+                    <div class="customer-cart">
+                        <h4>Йогурт "Оптималь"</h4>
+                        <p>Продано со скидкой: 45 шт</p>
+                        <p>Общая скидка: 21.60 руб.</p>
+                    </div>
+                    <div class="customer-cart">
+                        <h4>Шоколад "Пористый"</h4>
+                        <p>Продано со скидкой: 32 шт</p>
+                        <p>Общая скидка: 14.40 руб.</p>
+                    </div>
+                </div>
+
+                <div class="admin-panel">
+                    <h3>📊 Динамика цен</h3>
+                    <div class="filters">
+                        <label for="product-select">Товар:</label>
+                        <select id="product-select">
+                            <option value="milk">Молоко "Минское"</option>
+                            <option value="bread">Хлеб "Бородинский"</option>
+                            <option value="water">Вода "Дарида"</option>
+                        </select>
+                        <button class="btn btn-primary">Показать график</button>
+                    </div>
+                    <div class="panel-area">
+                        <p>Динамика изменения стоимости товара</p>
+                        <div style="height: 200px; display: flex; align-items: center; justify-content: center; color: #7f8c8d; background: #f8f9fa; border-radius: 8px;">
+                            График динамики цен
+                        </div>
+                        <table style="width: 100%; margin-top: 1rem; text-align: left;">
+                            <tr><th>Месяц</th><th>Цена</th></tr>
+                            <tr><td>Январь</td><td>2.30 руб.</td></tr>
+                            <tr><td>Февраль</td><td>2.40 руб.</td></tr>
+                            <tr><td>Март</td><td>2.50 руб.</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>&copy; 2023 Система самообслуживания магазина. Все права защищены.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#help">Помощь</a>
+                    <a href="#contact">Контакты</a>
+                    <a href="#privacy">Конфиденциальность</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

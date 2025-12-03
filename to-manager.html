@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управление сотрудниками</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">Магазин самообслуживания</h1>
+                <div class="user-info">
+                    <span class="user-name">Сидоров Алексей</span>
+                    <span class="user-role"> - Начальник отдела ТО</span>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Сменить роль</a></li>
+                        <li><a href="to-manager.html" class="nav-link active">Управление сотрудниками</a></li>
+                        <li><a href="admin.html" class="nav-link">Настройки системы</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section class="screen-header">
+                <h2>Управление сотрудниками и настройка системы</h2>
+                <p>Регистрация сотрудников и настройка параметров системы</p>
+            </section>
+            
+            <div class="admin-panels">
+                <div class="admin-panel">
+                    <h3>👥 Управление сотрудниками</h3>
+                    <button class="btn btn-primary" style="margin-bottom: 1.5rem;">Добавить сотрудника</button>
+                    
+                    <div class="employees-list">
+                        <div class="employee-item">
+                            <div class="employee-info">
+                                <h4>Иванов Иван</h4>
+                                <p>Должность: Администратор</p>
+                                <p>Логин: ivanov | Статус: <span class="status-active">Активен</span></p>
+                            </div>
+                            <div class="employee-actions">
+                                <button class="btn btn-secondary">Редактировать</button>
+                                <button class="btn btn-danger">Удалить</button>
+                            </div>
+                        </div>
+                        <div class="employee-item">
+                            <div class="employee-info">
+                                <h4>Петрова Мария</h4>
+                                <p>Должность: Товаровед</p>
+                                <p>Логин: petrova | Статус: <span class="status-active">Активна</span></p>
+                            </div>
+                            <div class="employee-actions">
+                                <button class="btn btn-secondary">Редактировать</button>
+                                <button class="btn btn-danger">Удалить</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="admin-panel">
+                    <h3>⚙️ Настройки системы</h3>
+                    <div class="system-settings">
+                        <div class="form-group">
+                            <label for="sound-alerts">Звуковые оповещения:</label>
+                            <input type="checkbox" id="sound-alerts" checked>
+                        </div>
+                        <div class="form-group">
+                            <label for="auto-logout">Автоматический выход (мин):</label>
+                            <input type="number" id="auto-logout" value="30">
+                        </div>
+                        <div class="form-group">
+                            <label for="receipt-print">Печать чеков:</label>
+                            <input type="checkbox" id="receipt-print" checked>
+                        </div>
+                        <div class="form-group">
+                            <label for="weight-tolerance">Допуск по весу (%):</label>
+                            <input type="number" id="weight-tolerance" value="5" min="1" max="10">
+                        </div>
+                        <button class="btn btn-primary">Сохранить настройки</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="auth-form" style="margin-top: 2rem;">
+                <h3>Добавление сотрудника</h3>
+                <div class="form-group">
+                    <label for="employee-name">ФИО</label>
+                    <input type="text" id="employee-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="employee-position">Должность</label>
+                    <select id="employee-position">
+                        <option value="admin">Администратор</option>
+                        <option value="merchandiser">Товаровед</option>
+                        <option value="cashier">Кассир</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="employee-login">Логин</label>
+                    <input type="text" id="employee-login" required>
+                </div>
+                <div class="form-group">
+                    <label for="employee-email">Email</label>
+                    <input type="email" id="employee-email" required>
+                </div>
+                <div class="form-actions">
+                    <button class="btn btn-primary">Сохранить</button>
+                    <button class="btn btn-secondary">Отмена</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>&copy; 2023 Система самообслуживания магазина. Все права защищены.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#help">Помощь</a>
+                    <a href="#contact">Контакты</a>
+                    <a href="#privacy">Конфиденциальность</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

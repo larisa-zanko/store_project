@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ошибка - Система самообслуживания</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">Магазин самообслуживания</h1>
+                <div class="user-info">
+                    <span class="user-name">Ошибка</span>
+                    <span class="user-role"> - Сообщение об ошибке</span>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">На главную</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="screen-header">
+                <h2>⚠️ Произошла ошибка</h2>
+                <p>Приносим извинения за неудобства</p>
+            </div>
+            
+            <div class="auth-form" style="max-width: 600px;">
+                <div class="notification notification-error" style="text-align: center;">
+                    <h3>Ошибка #404</h3>
+                    <p>Запрошенная страница не найдена или временно недоступна</p>
+                </div>
+                
+                <div class="notification notification-warning">
+                    <h4>Возможные причины:</h4>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Страница была перемещена или удалена</li>
+                        <li>Введен некорректный адрес</li>
+                        <li>Произошла техническая ошибка</li>
+                        <li>Система находится на обслуживании</li>
+                    </ul>
+                </div>
+                
+                <div style="text-align: center; margin: 2rem 0;">
+                    <h4>Рекомендуемые действия:</h4>
+                    <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
+                        <a href="index.html" class="btn btn-primary">Перейти на главную страницу</a>
+                        <a href="customer.html" class="btn btn-secondary">Вернуться к покупкам</a>
+                        <button class="btn btn-warning" onclick="alert('Техническая поддержка уведомлена. Ожидайте ответа.')">Сообщить об ошибке</button>
+                    </div>
+                </div>
+                
+                <div class="notification notification-success">
+                    <h4>🔗 Связи между страницами:</h4>
+                    <p>Кнопка "На главную" → Главная страница выбора ролей</p>
+                    <p>Кнопка "Вернуться к покупкам" → Страница процесса покупки</p>
+                    <p>Кнопка "Сообщить об ошибке" → Отправка уведомления администратору</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>&copy; 2023 Система самообслуживания магазина. Все права защищены.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Главная</a>
+                    <a href="error.html">Сообщить об ошибке</a>
+                    <a href="#help">Помощь</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
