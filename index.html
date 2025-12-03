@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Система самообслуживания магазина "YourChoice"</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Заголовок -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">Магазин самообслуживания "YourChoice"</h1>
+                <div class="user-info">
+                    <span class="user-name">Гость</span>
+                    <span class="user-role"> - Выберите роль</span>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="#" class="nav-link active">Главная</a></li>
+                        <li><a href="wireframe.html" class="nav-link">Схема связей</a></li>
+                        <li><a href="error.html" class="nav-link">Ошибки</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="main">
+        <div class="container">
+            <section class="screen-header">
+                <h2>Добро пожаловать в систему самообслуживания магазина "YourChoice"</h2>
+                <p>Выберите тип пользователя для начала работы</p>
+            </section>
+            
+            <div class="user-type-selection">
+                <div class="user-type-card">
+                    <h3>👤 Покупатель</h3>
+                    <p>Самостоятельное сканирование и оплата товаров без помощи персонала</p>
+                    <button class="btn btn-primary" disabled>Начать покупки</button>
+                    <p style="font-size: 0.8rem; color: #7f8c8d; margin-top: 0.5rem;">
+                        🔗 Связь с: <strong>customer.html</strong> (страница неактивна в прототипе)
+                    </p>
+                </div>
+                
+                <div class="user-type-card">
+                    <h3>👨‍💼 Администратор</h3>
+                    <p>Управление кассами, корзинами покупателей и поиск товаров</p>
+                    <button class="btn btn-primary" disabled>Войти как администратор</button>
+                    <p style="font-size: 0.8rem; color: #7f8c8d; margin-top: 0.5rem;">
+                        🔗 Связь с: <strong>admin.html</strong> (страница неактивна в прототипе)
+                    </p>
+                </div>
+                
+                <div class="user-type-card">
+                    <h3>📦 Товаровед</h3>
+                    <p>Управление товарами, скидками и учет просроченной продукции</p>
+                    <button class="btn btn-primary" disabled>Войти как товаровед</button>
+                    <p style="font-size: 0.8rem; color: #7f8c8d; margin-top: 0.5rem;">
+                        🔗 Связь с: <strong>merchandiser.html</strong> (страница неактивна в прототипе)
+                    </p>
+                </div>
+                
+                <div class="user-type-card">
+                    <h3>⚙️ Начальник ТО</h3>
+                    <p>Управление сотрудниками и настройка параметров системы</p>
+                    <button class="btn btn-primary" disabled>Войти как начальник ТО</button>
+                    <p style="font-size: 0.8rem; color: #7f8c8d; margin-top: 0.5rem;">
+                        🔗 Связь с: <strong>to-manager.html</strong> (страница неактивна в прототипе)
+                    </p>
+                </div>
+                
+                <div class="user-type-card">
+                    <h3>📊 Руководитель</h3>
+                    <p>Просмотр отчетов по продажам и аналитика товарооборота</p>
+                    <button class="btn btn-primary" disabled>Войти как руководитель</button>
+                    <p style="font-size: 0.8rem; color: #7f8c8d; margin-top: 0.5rem;">
+                        🔗 Связь с: <strong>reports.html</strong> (страница неактивна в прототипе)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>&copy; 2025 Система самообслуживания магазина "YourChoice". Все права защищены.</p>
+                    <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #bdc3c7;">
+                        <strong>Примечание:</strong> Это прототип интерфейса. Функциональные кнопки отключены.
+                        Используйте прямые ссылки ниже или навигацию выше.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
